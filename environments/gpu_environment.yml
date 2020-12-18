@@ -1,0 +1,17 @@
+name: detectron_gpu
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - cudatoolkit=10.1
+  - jupyter
+  - opencv=4.1.0
+  - pillow=8.0.1
+  - pip=20.3
+  - python=3.6
+  - pytorch=1.7.0
+  - torchaudio=0.7.0
+  - torchvision=0.8.1
+  - pip:
+    - -r file:gpu_requirements.txt
