@@ -2,11 +2,17 @@ import logging
 import time
 
 from commons.commons import decode_base64_img
-from flask import Blueprint, request
+from flask import Blueprint, render_template, request
 
 from flask_app.model import model_store
 
 blueprint = Blueprint('blueprint', __name__)
+
+
+@blueprint.route('/')
+def index():
+    logging.info("GET /")
+    return render_template('index.html')
 
 
 @blueprint.route('/predict', methods=['POST'])
