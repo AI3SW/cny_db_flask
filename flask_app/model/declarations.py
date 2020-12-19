@@ -1,6 +1,7 @@
 import logging
 from abc import ABC, abstractmethod
 
+from commons.commons import encode_img_to_base_64
 from detectron2 import model_zoo
 from detectron2.config import get_cfg
 from detectron2.data import MetadataCatalog
@@ -77,6 +78,8 @@ class FasterRCNN(BaseModel):
         return response
 
     def get_visualization(self, input_image, outputs):
+        logging.info('Generating visualization...')
         v = Visualizer(input_image[:, :, ::-1], self.metadata)
-        return v.draw_instance_predictions(
-            outputs["instances"].to("cpu"))
+        out = v.draw_instance_predictions(outputs["instances"].to("cpu"))
+        encoded_img = encode_img_to_base_64(out.get_image())
+        return {'img': encoded_img}

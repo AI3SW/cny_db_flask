@@ -22,17 +22,19 @@ def predict():
         start_time = time.time()
 
         input_image = decode_base64_img(req['img'])
-        prediction = model_store['faster_rcnn'].predict(input_image)
+        model = model_store['faster_rcnn']
+        prediction = model.predict(input_image)
 
-        if req.get('response_type', 'raw') == 'raw':
-            response = model_store['faster_rcnn'].format_prediction(prediction)
-        # else:
-        #     return model_store['faster_rcnn'].get_visualization(input_image, prediction)
+        if req.get('response_type') == 'image':
+            response = model.get_visualization(input_image, prediction)
+        else:
+            response = model.format_prediction(prediction)
 
         end_time = time.time()
         logging.info('Total prediction time: %.3fs.' % (end_time - start_time))
 
         return response
+
     except Exception as error:
         logging.exception(error)
         return {'error': 'Error in prediction'}
