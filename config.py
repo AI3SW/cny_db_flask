@@ -18,4 +18,3 @@ LOGGING_CONFIG = {
         'handlers': ['console', 'file']
     }
 }
-CPU = False

@@ -9,114 +9,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <script>
-        $(document).ready(function () {
-            $("#predict_button").click(function () {
-                console.log('predict button click');
-                let image_string = $("#b64")[0].innerHTML;
-                image_string = image_string.split(',')[1];
-
-                $.ajax({
-                    url: "./predict",
-                    type: "POST",
-                    data: JSON.stringify({
-                        "response_type": "image",
-                        "img": image_string
-                    }),
-                    contentType: "application/json",
-                    dataType: "json",
-                    success: function (data, status) {
-                        console.log('status: ' + status);
-                        if (status === "success") {
-                            $("#output-img")[0].src = "data:image/jpeg;base64, " + data["img"];
-                        }
-                    }
-                });
-
-                $.ajax({
-                    url: "./predict",
-                    type: "POST",
-                    data: JSON.stringify({
-                        "response_type": "raw",
-                        "img": image_string
-                    }),
-                    contentType: "application/json",
-                    dataType: "json",
-                    success: function (data, status) {
-                        console.log('status: ' + status);
-                        if (status === "success") {
-                            $("#json-response")[0].textContent = JSON.stringify(data, undefined, 2);
-                        }
-                    }
-                });
-            });
-        });
-    </script>
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="container-fluid text-center my-5">
-            <h1 class="m-5">Object Detection App</h1>
-            <div class="container-fluid">
-                <div class="input-group mb-3">
-                    <div class="col"></div>
-                    <div class="custom-file col">
-                        <input type="file" class="custom-file-input" id="inp">
-                        <label class="custom-file-label" for="inp">Choose file</label>
-                    </div>
-                    <div class="col"></div>
-                </div>
-                <p id="b64" hidden></p>
-                <div class="container-fluid row">
-                    <div class="col-lg-6">
-                        <h4>Input</h4>
-                        <img id="input-img" class="rounded" style="max-width: 750px;">
-                    </div>
-                    <div class="col-lg-6">
-                        <h4>Output</h4>
-                        <img id="output-img" class="rounded" style="max-width: 750px;">
-                    </div>
-                </div>
-            </div>
+            <h1 class="m-5">Flask App Template</h1>
+            <p>Boilerplate code for a flask app to wrap around a Machine Learning Model.</p>
         </div>
 
         <div class="container-fluid text-center" style="margin-top: 20px;">
             <button id="predict_button" type="button" class="btn btn-primary">Predict</button>
         </div>
-
-        <div class="container-fluid p-3 row">
-            <div class="col-lg-4"></div>
-            <div class="col-lg-4">
-                <pre><code style="font-size: 24px;" id="json-response"></code></p>
-            </div>
-            <div class="col-lg-4"></div>
-        </div>
     </div>
 
-
-    <script>
-        function readFile() {
-            if (this.files && this.files[0]) {
-                // update filename
-                //get the file name
-                var fileName = $(this).val();
-                var cleanFileName = fileName.replace('C:\\fakepath\\', " ");
-                //replace the "Choose a file" label
-                $(this).next('.custom-file-label').html(cleanFileName);
-
-                var FR = new FileReader();
-                FR.addEventListener("load", function (e) {
-                    document.getElementById("input-img").src = e.target.result;
-                    document.getElementById("b64").innerHTML = e.target.result;
-                });
-                FR.readAsDataURL(this.files[0]);
-            }
-        }
-
-        // document.getElementById("inp").addEventListener("change", readFile);
-        $("#inp").change(readFile);
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>

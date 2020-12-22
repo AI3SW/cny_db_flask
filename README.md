@@ -1,15 +1,26 @@
-# Object Detection App
+# Flask App Template
+
+Boilerplate code for a flask app to wrap around a Machine Learning Model.
+
+## Simple How to Use
+
+* Clone this repo
+* Update repository remote:
+
+```bash
+$ git remote set-url origin <newurl>
+```
+
+* Create your own model by extending from `BaseModel` in [declarations.py](flask_app/model/declarations.py)
+* update `init_model_store` function in [`model` package](flask_app/model/__init__.py)
+* update endpoints in [views.py](flask_app/views.py)
 
 ## Create Environment using Conda
 
 ```bash
-$ # create detectron_cpu conda environment
-$ conda env create --file environments/cpu_environment.yml
-$ conda activate detectron_cpu
-
-$ # create detectron_gpu conda environment
-$ conda env create --file environments/gpu_environment.yml
-$ conda activate detectron_gpu
+$ # create conda environment
+$ conda env create --file environments/environment.yml
+$ conda activate <conda_env>
 ```
 
 ## Serve Flask App

@@ -1,0 +1,6 @@
+name: conda_env
+channels:
+  - defaults
+dependencies:
+  - pip:
+    - Flask==1.1.2
