@@ -14,4 +14,5 @@ dependencies:
   - torchaudio=0.7.0
   - torchvision=0.8.1
   - pip:
+    - Flask==1.1.2
     - -r file:gpu_requirements.txt

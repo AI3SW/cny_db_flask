@@ -11,8 +11,6 @@ $ # create detectron_gpu conda environment
 $ conda env create --file environments/gpu_environment.yml
 $ conda activate detectron_gpu
 
-$ # update conda environment
-$ conda env update --file environment.yml
 ```
 
 ## Serve Flask App
