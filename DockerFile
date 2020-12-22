@@ -1,0 +1,16 @@
+FROM nvcr.io/nvidia/pytorch:20.12-py3
+
+COPY ./ /object_detection
+WORKDIR /object_detection
+
+RUN conda env create --file environments/gpu_environment.yml
+RUN echo "conda activate detectron_gpu" >> ~/.bashrc
+
+EXPOSE 5000
+
+ENV FLASK_APP=flask_app
+
+# for conda activate to work 
+ENV PATH /opt/conda/envs/detectron_gpu/bin:$PATH    
+
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
