@@ -85,7 +85,7 @@ There are two configuration files:
 
 ```bash
 $ docker build -t chinese_words -f DockerFile .
-$ docker run -d --rm -p 5000:5000 chinese_words
+$ docker run -d --rm -p 5000:5000 --name chinese_words chinese_words
 
 $ # tear down container
 $ docker stop chinese_words
