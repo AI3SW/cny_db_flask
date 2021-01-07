@@ -37,12 +37,15 @@ $ flask run --host=0.0.0.0 --port=5000
 
 ### Build and Run Flask App using Docker
 
-* Current image is for GPU version of the app
+* Current image is only CPU compatible
+* Update dockerfile, replacing `<app_name>`
+* Add `instance/config` file
+* Build and Run Image
 
 ```bash
-$ docker build -t object-detection .
-$ nvidia-docker run -d --rm -p 5000:5000 object-detection
+$ docker build -t <app_name> -f DockerFile .
+$ nvidia-docker run -d --rm -p 5000:5000 <app_name>
 
 $ # tear down container
-$ docker stop object-detection
+$ docker stop <app_name>
 ```
