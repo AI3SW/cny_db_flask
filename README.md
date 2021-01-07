@@ -35,7 +35,7 @@ $ PGPASSWORD=password psql -U postgres -h localhost -d ai_3 -f database/create_t
 ```bash
 $ docker exec -it postgres /bin/bash
 root@container:/$ apt-get update && apt-get install git
-root@container:/$ git clone https://github.com/kw01sg/ai_toolbox_db.git
+root@container:/$ git clone https://github.com/kw01sg/cny-2021.git
 root@container:/$ PGPASSWORD=password psql -U postgres -h localhost -f chinese_words/scripts/create_db.sql
 root@container:/$ PGPASSWORD=password psql -U postgres -h localhost -d ai_3_staging -f chinese_words/scripts/create_tables.sql
 root@container:/$ PGPASSWORD=password psql -U postgres -h localhost -d ai_3 -f chinese_words/scripts/create_tables.sql
