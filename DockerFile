@@ -1,15 +1,15 @@
 FROM continuumio/miniconda3
 
-COPY ./ /<app_name>
+COPY ./ /chinese_words
 
-WORKDIR /<app_name>
+WORKDIR /chinese_words
 
-RUN conda env create --name <app_name> --file /<app_name>/environments/environment.yml
-RUN echo "conda activate <app_name>" >> ~/.bashrc
+RUN conda env create --name chinese_words --file /chinese_words/environments/environment.yml
+RUN echo "conda activate chinese_words" >> ~/.bashrc
 
 EXPOSE 5000
 
-ENV PATH /opt/conda/envs/<app_name>/bin:$PATH
+ENV PATH /opt/conda/envs/chinese_words/bin:$PATH
 
 ENV FLASK_APP=flask_app
 
