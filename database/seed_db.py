@@ -8,7 +8,7 @@ from sqlalchemy import create_engine
 
 dictConfig(LOGGING_CONFIG)
 
-TABLE_NAME = "chinese_words"
+TABLE_NAME = "chinese_word"
 CSV_PATH = './data/words.csv'
 
 if __name__ == "__main__":
