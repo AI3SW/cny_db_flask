@@ -58,19 +58,35 @@ $ export FLASK_ENV=development
 $ flask run --host=0.0.0.0 --port=5000
 ```
 
+## Configuration
+
+There are two configuration files:
+
+* [`config.py`](./config.py)
+  * Config file for non-sensitive and default variables
+  * This file will be included in the repository when cloned
+* `instance/config.py`
+  * Config file for instance specific variables or variables that contain sensitive information
+  * This file will __NOT__ be included in the repository when cloned, so you will have to create this file
+  * Variables declared in `instance/config.py` will override those in `default_config.py`
+  * Current variables:
+    * `SQLALCHEMY_DATABASE_URI`
+        * connect to `staging_ai_3` db for testing purposes
+    * `SECRET_KEY`
+        * Generate this yourself: [Official Flask documentation on generating a secret key](https://flask.palletsprojects.com/en/1.1.x/config/#SECRET_KEY)
+
 ## Docker
 
 ### Build and Run Flask App using Docker
 
 * Current image is only CPU compatible
-* Update dockerfile, replacing `<app_name>`
 * Add `instance/config` file
 * Build and Run Image
 
 ```bash
-$ docker build -t <app_name> -f DockerFile .
-$ nvidia-docker run -d --rm -p 5000:5000 <app_name>
+$ docker build -t chinese_words -f DockerFile .
+$ docker run -d --rm -p 5000:5000 chinese_words
 
 $ # tear down container
-$ docker stop <app_name>
+$ docker stop chinese_words
 ```
