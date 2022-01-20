@@ -1,4 +1,4 @@
-# cny-2021
+# cny_db_flask
 
 Simple flask app to serve chinese words from database for CNY 2021.
 
@@ -79,7 +79,6 @@ There are two configuration files:
 
 ### Build and Run Flask App using Docker
 
-* Current image is only CPU compatible
 * Add `instance/config` file
 * Build and Run Image
 
