@@ -36,9 +36,9 @@ $ PGPASSWORD=password psql -U postgres -h localhost -d ai_3 -f database/create_t
 $ docker exec -it postgres /bin/bash
 root@container:/$ apt-get update && apt-get install git
 root@container:/$ git clone https://github.com/kw01sg/cny-2021.git
-root@container:/$ PGPASSWORD=password psql -U postgres -h localhost -f cny-2021/database/create_db.sql
-root@container:/$ PGPASSWORD=password psql -U postgres -h localhost -d ai_3_staging -f cny-2021/database/create_table.sql
-root@container:/$ PGPASSWORD=password psql -U postgres -h localhost -d ai_3 -f cny-2021/database/create_table.sql
+root@container:/$ PGPASSWORD=password psql -U postgres -h localhost -f cny_db_flask/database/create_db.sql
+root@container:/$ PGPASSWORD=password psql -U postgres -h localhost -d ai_3_staging -f cny_db_flask/database/create_table.sql
+root@container:/$ PGPASSWORD=password psql -U postgres -h localhost -d ai_3 -f cny_db_flask/database/create_table.sql
 ```
 
 ## Seed Staging Database
